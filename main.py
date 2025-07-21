@@ -33,9 +33,9 @@ class XhsPlugin(Star):
         )
 
     async def _daily_push(self):
-        targets = self.cfg["targets"]
-        text = self.cfg["push_text"]
-        img  = self.cfg["push_image"]
+        targets = self.config["targets"]
+        text = self.config["push_text"]
+        img  = self.config["push_image"]
         chain = [Plain(text), Image.fromURL(img)]
 
         logger.info(f"[xhs_auto] 开始推送，目标 {targets}")
@@ -52,12 +52,12 @@ class XhsPlugin(Star):
     async def cmd_add(self, event: AstrMessageEvent):
         """把当前会话加入每日推送列表"""
         umo = event.unified_msg_origin
-        if umo in self.cfg["targets"]:
+        if umo in self.config["targets"]:
             yield event.plain_result("该会话已在推送列表中！")
             return
 
-        self.cfg["targets"].append(umo)
-        self.cfg.save_config()
+        self.config["targets"].append(umo)
+        self.config.save_config()
         yield event.plain_result("✅已加入每日 10:00 推送列表！")
 
     @filter.command("xhs_remove")
@@ -65,12 +65,12 @@ class XhsPlugin(Star):
     async def cmd_remove(self, event: AstrMessageEvent):
         """把当前会话从推送列表移除"""
         umo = event.unified_msg_origin
-        if umo not in self.cfg["targets"]:
+        if umo not in self.config["targets"]:
             yield event.plain_result("该会话不在推送列表！")
             return
 
-        self.cfg["targets"].remove(umo)
-        self.cfg.save_config()
+        self.config["targets"].remove(umo)
+        self.config.save_config()
         yield event.plain_result("❌已移出推送列表！")
 
     # ---------- 优雅退出 ----------
@@ -84,8 +84,8 @@ class XhsPlugin(Star):
     async def cmd_push_now(self, event: AstrMessageEvent):
         """立即手动推送今日内容到当前会话"""
         umo = event.unified_msg_origin
-        text = self.cfg["push_text"]
-        img  = self.cfg["push_image"]
+        text = self.config["push_text"]
+        img  = self.config["push_image"]
         chain = [Plain(text), Image.fromURL(img)]
 
         try:
