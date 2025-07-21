@@ -14,6 +14,8 @@ class XhsPlugin(Star):
     def __init__(self, context: Context, config: AstrBotConfig):
         super().__init__(context)
         self.config = config
+        print(self.config)
+        print(context)
         self.scheduler = AsyncIOScheduler(timezone="Asia/Shanghai")
         self._schedule_task()
         self.scheduler.start()
