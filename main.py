@@ -11,9 +11,9 @@ from astrbot.api.all import AstrBotConfig
 
 @register("xhs_demo", "your_name", "每日自动小红书推广", "1.0.1", "")
 class XhsPlugin(Star):
-    def __init__(self, ctx: Context, cfg: AstrBotConfig):
-        super().__init__(ctx)
-        self.cfg = cfg
+    def __init__(self, context: Context, config: AstrBotConfig):
+        super().__init__(context)
+        self.config = config
         self.scheduler = AsyncIOScheduler(timezone="Asia/Shanghai")
         self._schedule_task()
         self.scheduler.start()
@@ -21,7 +21,7 @@ class XhsPlugin(Star):
 
     # ---------- 定时任务 ----------
     def _schedule_task(self):
-        hour, minute = map(int, self.cfg["push_time"].split(":"))
+        hour, minute = map(int, self.config["push_time"].split(":"))
         self.scheduler.add_job(
             self._daily_push,
             trigger="cron",
