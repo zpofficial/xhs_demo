@@ -11,7 +11,7 @@ from astrbot.api.all import AstrBotConfig
 
 @register("xhs_demo", "your_name", "每日自动小红书推广", "1.0.1", "")
 class XhsPlugin(Star):
-    def __init__(self, context: Context, config: AstrBotConfig):
+    def __init__(self, context, config: AstrBotConfig):
         super().__init__(context)
         self.context = context
         self.config = config
