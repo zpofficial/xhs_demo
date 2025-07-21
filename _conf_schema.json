@@ -15,7 +15,7 @@
     "push_image": {
       "description": "图片 URL",
       "type": "string",
-      "default": "https://via.placeholder.com/500x500.png?text=Morning"
+      "default": "https://picasso-static.xiaohongshu.com/fe-platform/2b145902e47cfe2c7843282b22bbe69e9541215c.png"
     },
     "push_time": {
       "description": "每日推送时间（HH:MM，24h 制）",
