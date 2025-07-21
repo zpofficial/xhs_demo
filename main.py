@@ -22,7 +22,7 @@ class XhsPlugin(Star):
         text = "🌸今日份小红书推送🌸\n———————————————\n姐妹们这条连衣裙真的绝绝子！💃\n显瘦 10 斤不是梦！"
 
         # 2. 图片（可换成你自己的 URL 或本地路径）
-        image_url = "https://via.placeholder.com/500x500.png?text=XHS"
+        image_url = "https://picasso-static.xiaohongshu.com/fe-platform/2b145902e47cfe2c7843282b22bbe69e9541215c.png"
 
         # 3. 组装消息链
         chain = [
