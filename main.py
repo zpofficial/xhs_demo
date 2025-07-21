@@ -8,7 +8,7 @@ from astrbot.api.message_components import Plain, Image
 from astrbot.api.all import AstrBotConfig
 
 @register("xhs_demo", "your_name", "每日自动小红书推广", "1.0.0", "")
-class XhsAutoPush(Star):
+class XhsPlugin(Star):
     def __init__(self, ctx: Context, cfg: AstrBotConfig):
         super().__init__(ctx)
         self.cfg = cfg
